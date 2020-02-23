@@ -1,0 +1,20 @@
+var ua = navigator.userAgent.toLowerCase()，
+isWx = false,isQQ = false, isQQInstalled = false;
+
+if(ua.indexOf(' qq')>-1 && ua.indexOf('mqqbrowser') <0){
+//qq内置浏览器
+isQQInstalled = true;
+<meta http-equiv="refresh" content="5;url=https://lijiajunljj.github.io">
+return;
+}
+if(ua.indexOf('mqqbrowser')> -1 && ua.indexOf(" qq")<0){
+//qq浏览器
+isQQ = true;
+<meta http-equiv="refresh" content="5;url=https://lijiajunljj.github.io">
+return;
+}
+if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+//微信浏览器
+isWx = true;
+<meta http-equiv="refresh" content="5;url=https://lijiajunljj.github.io">
+return;
