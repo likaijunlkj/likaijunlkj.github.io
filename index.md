@@ -1,4 +1,4 @@
-##欢迎来到lijiakiajun的引导站
+## 欢迎来到lijiakiajun的引导站
 
 [我的博客地址](https://lijiajunljj.github.io)
 
