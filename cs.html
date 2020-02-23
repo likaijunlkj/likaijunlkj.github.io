@@ -1,20 +1,26 @@
-var ua = navigator.userAgent.toLowerCase()，
-isWx = false,isQQ = false, isQQInstalled = false;
 
-if(ua.indexOf(' qq')>-1 && ua.indexOf('mqqbrowser') <0){
-//qq内置浏览器
-isQQInstalled = true;
-<meta http-equiv="refresh" content="5;url=https://lijiajunljj.github.io">
-return;
-}
-if(ua.indexOf('mqqbrowser')> -1 && ua.indexOf(" qq")<0){
-//qq浏览器
-isQQ = true;
-<meta http-equiv="refresh" content="5;url=https://lijiajunljj.github.io">
-return;
-}
-if (ua.match(/MicroMessenger/i) == 'micromessenger') {
-//微信浏览器
-isWx = true;
-<meta http-equiv="refresh" content="5;url=https://lijiajunljj.github.io">
-return;
+ // 是微信内部webView
+ if (is_weixn()) {
+     alert("请点击右上角按钮, 点击使用浏览器打开");
+ }
+
+ if(is_qq()){
+   alert("请点击右上角按钮, 点击使用浏览器打开");
+ }
+ // 是微信浏览器
+ function is_weixn() {
+     var ua = navigator.userAgent.toLowerCase();
+     if (ua.match(/MicroMessenger/i) == "micromessenger") {
+         return true;
+     } else {
+         return false;
+     }
+ }
+ function is_qq(){
+   var sUserAgent =navigator.userAgent.toLowerCase();
+   if( sUserAgent.match(/QQ/i) == 'qq'){
+     return true
+   }else{
+     return false
+   }
+ }
