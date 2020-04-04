@@ -4,4 +4,4 @@
 
 这里同时也是lijiakiajun的测试地
 
-本站域名:lijiajunljj.tk
+本站域名:test.lijiajunljj.tk
