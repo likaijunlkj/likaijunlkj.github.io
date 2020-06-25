@@ -1,0 +1,552 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<meta HTTP-EQUIV="expires" CONTENT="0"> 
+<title>RaiDrive映射Office 365的5T网盘中需要注意的坑 | Lijiakaijun&#39;s blog</title>	
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lijiajunljj/wz-cdn@1.3/old/styles/main.css">
+<script type="text/javascript">
+function getCSS()
+{
+        datetoday = new Date();
+        timenow=datetoday.getTime();
+        datetoday.setTime(timenow);
+        thehour = datetoday.getHours();
+
+        if (thehour<6)
+
+            display = "https://cdn.jsdelivr.net/gh/lijiajunljj/wz-cdn@1.3/old/media/css/night.css";
+
+       else if (thehour>17)
+
+            display = "https://cdn.jsdelivr.net/gh/lijiajunljj/wz-cdn@1.3/old/media/css/night.css";   
+
+        else if (thehour>6)
+           
+            display = "https://cdn.jsdelivr.net/gh/lijiajunljj/wz-cdn@1.3/old/media/css/day.css";
+
+        else if (thehour<17)
+
+            display = "https://cdn.jsdelivr.net/gh/lijiajunljj/wz-cdn@1.3/old/media/css/day.css";
+      
+
+var css = '<';
+        css+='link rel="stylesheet" href='+display+' \/';
+        css+='>';
+        document.write(css);
+}
+</script>
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+<link href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css" rel="stylesheet" />
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<script type='text/javascript' src='https://cdn.jsdelivr.net/gh/lijiajunljj/wz-cdn@1.3/old/media/scripts/script.js'></script>
+<link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
+  <script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script>wow=new WOW({boxClass:'wow',animateClass:'animated',offset:0,mobile:true,live:true});wow.init();</script>
+
+
+
+<script type="text/javascript">
+window.onload=getCSS();
+</script>
+
+
+ 	
+</head>
+<body class="post-template-default single single-post postid-70 single-format-standard">
+    <div id="wrapper">
+        
+			
+		<header id="header" class="site-header" 
+		
+		style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(https://i.loli.net/2019/11/29/1GDk2u68PBMtbns.png)"
+		
+		>
+			<div class="site-branding">
+									<h1 class="site-title"><a href="https://lijiajunljj.github.io" rel="home">Lijiakaijun&#39;s blog</a></h1>
+										
+					<h2 class="site-description"><script type="text/javascript">
+<!--
+var len=19;
+var rnd=Math.floor(Math.random()*len);
+var txt=new Array(len);
+txt[0]="I like Minecraft";
+txt[1]="我的世界";
+txt[2]="Minecraft";
+txt[3]="Windows 10";
+txt[4]="始创于2019年9月14日10点08分";
+txt[5]="o(*￣▽￣*)ブ";
+txt[6]="苦力怕";
+txt[7]="Hello,World!";
+txt[8]="Windows";
+txt[9]="二次元";
+txt[10]="注意到B站上的GIF动画吗";
+txt[11]="- _ -";
+txt[12]="What are you doing?";
+txt[13]="Nyan Cat";
+txt[14]="初音未来!";
+txt[15]="QwQ";
+txt[16]="需要交换友链吗?";
+txt[17]="病名は愛だった";
+txt[18]="Creeper?";
+txt[19]="按F12后看看我~";
+document.write(txt[rnd]);
+//-->
+</script></h2>
+										
+							</div>
+			<nav id="nav-wrapper">
+				<div class="container">
+					<div class="nav-toggle">
+						<div class="bars">
+							<div class="bar"></div>
+							<div class="bar"></div>
+							<div class="bar"></div>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<ul id="" class="dove">
+		 
+     			
+<li>
+	 
+	<a  href="/"> 首页</a></li>
+	
+    
+     			
+<li>
+	 
+	<a  href="/archives"> 文章</a></li>
+	
+    
+     			
+<li>
+	 
+	<a  href="/post/about"> 关于</a></li>
+	
+    
+     			
+<li>
+	 
+	<a  href="/post/link/"> 相关链接（友链?）</a></li>
+	
+    
+     			
+<li>
+	 
+	<a  href="/post/new/"> 网站更新内容</a></li>
+	
+    
+
+</ul>
+</li>		
+		
+</ul>				</div>
+			</nav>
+						<div class="jingge">
+
+
+    
+			
+<a  href="https://twitter.com/lijiakaijun" target="_blank" ><i class="iconfont icon-twitter"></i></a>
+ 
+    
+			
+<a  href="https://github.com/lijiajunljj" target="_blank" ><i class="iconfont icon-github"></i></a>
+ 
+    
+			
+<a  href="https://www.zhihu.com/people/lijiajunkaijun" target="_blank" ><i class="iconfont icon-zhihu"></i></a>
+ 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+			
+<a  href="https://weibo.com/lijiajunljjlkj" target="_blank" ><i class="iconfont icon-weibo"></i></a>
+ 
+    
+
+    
+        </header>
+
+		<div id="content" class="container">
+			<div class="row">
+	<div class="col-md-8 site-main">
+				
+<article id="post-70" class="post-70 post type-post status-publish format-standard hentry category-5 tag-10 tag-9 tag-11">
+
+	
+	                      
+		<div class="entry-content">
+			<h1 class="wow swing entry-title">RaiDrive映射Office 365的5T网盘中需要注意的坑</h1>
+<div class="entry-meta">
+<div class="wow bounce">
+	<i class="iconfont icon-rili"> <time class="lately-a" datetime="2019-11-29 23:21:44" itemprop="datePublished" pubdate="">2019-11-29</time></i>
+	          </div>
+			
+</span>
+													 
+		</div>
+                  
+			<div class="wow slideInLeft entry-summary song">
+				<blockquote>
+<p>好久没更新了，因为我太忙了...... 😦</p>
+</blockquote>
+<p>最近闲着无聊，去白嫖了Office 365的5T网盘（容易翻车的吧）</p>
+<p>白嫖成功后，我就试着把那个5T网盘映射到本地里面</p>
+<p>在寻找软件时，我选择了RaiDrive进行映射</p>
+<p>那么，接下来，看看我是怎么踩的坑......</p>
+<hr>
+<p>下载并安装RaiDrive后打开它，点击右上角的小齿轮</p>
+<p>点击后找到Language,选择中文(简体)</p>
+<p>设置后应该是这个样子：</p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2019/11/29/69wRWdEtCYsGNpP.png" alt="Snipaste_2019-11-29_21-52-31.png"></figure>
+<p>返回主页面，点击添加</p>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2019/11/29/tvFTB4QAkzEweSi.png" alt="Snipaste_2019-11-29_21-51-48.png"></figure>
+<p>注意，坑来了！！！</p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2019/11/29/opjqlIObzHGPR82.png" alt="Snipaste_2019-11-29_21-53-31.png"></figure>
+<p>这里要点击上面第二个按钮</p>
+<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2019/11/29/ik9h1Fey745NZoj.png" alt="Snipaste_2019-11-29_21-53-50.png"></figure>
+<p>然后选择OneDrive,下面框里自己自定义</p>
+<p>点击确认后，接着会跳出一个浏览器，地址是<img src="https://i.loli.net/2019/11/29/tUIlPsf5XAjHvkM.png" alt="Snipaste_2019-11-29_21-54-48.png"></p>
+<p>输入你注册的Office 365账号和密码（因为这里我输过账号了，所以不用再次输入）</p>
+<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2019/11/29/3RoZvptClXauMWr.png" alt="Snipaste_2019-11-29_21-55-09.png"></figure>
+<p>输入完毕，点击确认后会跳转到这个界面，问你是否接受许可</p>
+<p>（我这里用360极速浏览器，加载不出来，重新刷新一次，就好了）</p>
+<figure data-type="image" tabindex="6"><img src="https://i.loli.net/2019/11/29/fNI3PxcbWR9Fl7z.png" alt="Snipaste_2019-11-29_22-00-57.png"></figure>
+<p>点击接受，再稍等一会......</p>
+<p>当你的浏览器显示这个界面时，表示已经添加好了，这时你可以打开“我的电脑”来查看</p>
+<p>了</p>
+<figure data-type="image" tabindex="7"><img src="https://i.loli.net/2019/11/29/WF6534V7CyH9oKh.png" alt="Snipaste_2019-11-29_22-01-55.png"></figure>
+<figure data-type="image" tabindex="8"><img src="https://i.loli.net/2019/11/29/q4fIc8g9HWrv3uQ.png" alt="Snipaste_2019-11-29_22-24-38.png"></figure>
+<blockquote>
+<p>我这里映射了两个网盘，一个是个人的，一个是现在在弄的</p>
+</blockquote>
+<p>到这里，映射就基本完成了~</p>
+<p>现在你可以享用(可能会翻车的)5T网盘了</p>
+<blockquote>
+<p>温馨提示：<br>
+这个网盘容易翻车，最好不要存放贵重物品，否则到时连上天都救不了你了<br>
+对了，白嫖5T网盘的教程百度搜索一下就有的了😀</p>
+</blockquote>
+
+							</div>
+	<div class="wow bounceInDown vt-post-tags">
+ 
+				<a href="https://lijiajunljj.github.io/tag/office" rel="tag">office</a>	
+				 
+				<a href="https://lijiajunljj.github.io/tag/Windows" rel="tag">Windows</a>	
+				 
+					</div>						
+<nav class="navigation3 post-navigation3" role="navigation">
+		
+		<div class="nav-links3">
+      
+		<div class="wow bounceInLeft nav-previous3"><a href="https://lijiajunljj.github.io/post/powerpoin-to-mp4-or-wmv" rel="prev"> 用Microsoft Office PowerPoint导出视频</a></div>
+		 
+		 
+		<div class="wow bounceInRight nav-next3"><a href="https://lijiajunljj.github.io/post/i5dTlPxHy" rel="next"> 让QQ变透明</a></div>
+		
+		</div>
+	</nav>
+	<div class="wow rollIn author-info" style="visibility: visible; animation-name: rollIn;">
+	<div class="author-avatar pull-left"><img src="https://lijiajunljj.github.io/images/avatar.png" ></div>
+ 
+	<div class="author-description"><div class="author-title"><div class="author-link" rel="author">lijiakaijun</div></div>
+
+
+	<p class="author-bio">一位喜欢玩Minecraft的初中生~</p></div></div>
+	
+		</div>
+		
+ 
+		
+</article>
+
+<div id="marlin_lite_about_widget-2" class="wow bounceInUp widget marlin_lite_about_widget" data-wow-delay="0.1s">
+		
+        
+		<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://lijiajunljj.github.io/media/scripts/Valine.min.js'></script>
+
+<div class="comment"></div>
+<script>
+        new Valine({
+            // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+            av: AV, 
+            el: '.comment',
+            lang: 'zh-cn',
+            
+            admin_email:'QLJJ18934371267@163.com',
+            
+            
+            emoticon_url: 'https://lijiajunljj.github.io/alu/alu/alu',
+             
+      emoticon_list: ["吐.png","喷血.png","狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","中指.png","尴尬.png","瞅你.png","想一想.png","中枪.png","得意.png","肿包.png","扇耳光.png","亲亲.png","惊喜.png","脸红.png","无所谓.png","便便.png","愤怒.png","蜡烛.png","献黄瓜.png","内伤.png","投降.png","观察.png","看不见.png","击掌.png","抠鼻.png","邪恶.png","看热闹.png","口水.png","抽烟.png","锁眉.png","装大款.png","吐舌.png","无奈.png","长草.png","赞一个.png","呲牙.png","无语.png","阴暗.png","不出所料.png","咽气.png","期待.png","高兴.png","吐血倒地.png","哭泣.png","欢呼.png","黑线.png","喜极而泣.png","喷水.png","深思.png","鼓掌.png","暗地观察.png"],
+     
+      app_id: 'T9r2ERABWPixW0jb47coqfJA-MdYXbMMI',
+      	
+      
+      app_key: '1J4xiFEroPKsCg7FtEsLuQl1',
+         	
+          
+      placeholder: '看到我了吗?点我就可以评论了!快来试试~记得要遵守相关法律哟~'
+       
+        });
+    </script> 
+
+
+   
+  
+ 
+
+		</div>
+
+			</div>
+			
+
+
+<div class="tocc col l3 hide-on-med-and-down">
+	
+        <div class="toc-widget">
+			
+            <div class="toc-title"></div>
+			
+            <div id="toc-content">
+			
+			
+			</div>
+        </div>
+    </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.5.0/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '.entry-summary',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('.entry-summary').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>										 
+
+ 
+       
+
+
+			</div>
+		</div>
+
+		
+		 	<footer id="colophon" class="site-footer">
+
+			<div class="container">
+	
+				<div class="copyright"><script>
+    function secondToDate(second) {
+        if (!second) {
+            return 0;
+        }
+        var time = new Array(0, 0, 0, 0, 0);
+        if (second >= 365 * 24 * 3600) {
+            time[0] = parseInt(second / (365 * 24 * 3600));
+            second %= 365 * 24 * 3600;
+        }
+        if (second >= 24 * 3600) {
+            time[1] = parseInt(second / (24 * 3600));
+            second %= 24 * 3600;
+        }
+        if (second >= 3600) {
+            time[2] = parseInt(second / 3600);
+            second %= 3600;
+        }
+        if (second >= 60) {
+            time[3] = parseInt(second / 60);
+            second %= 60;
+        }
+        if (second > 0) {
+            time[4] = second;
+        }
+        return time;
+    }</script><script type="text/javascript" language="javascript">
+    function setTime() {
+        var create_time = Math.round(new Date(Date.UTC(2019, 08, 14, 10, 08, 00)).getTime() / 1000);
+        var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);
+        currentTime = secondToDate((timestamp - create_time));
+        currentTimeHtml = currentTime[0] + '年' + currentTime[1] + '天'
+                + currentTime[2] + '时' + currentTime[3] + '分' + currentTime[4]
+                + '秒';
+        document.getElementById("htmer_time").innerHTML = currentTimeHtml;
+    }    setInterval(setTime, 1000);</script>
+这个网站已经经过了<span id="htmer_time"></span>的风雨~<br>Theme:   <a href="https://github.com/shanbufun/gridea-theme-pan" target="_blank" title="Pan"><span>Pan</span></a>.  by <a href="https://shanbu.fun/" target="_blank"  title="山坜方" >Shanbufun</a></div>		
+			</div>
+		
+		</footer>
+		<!--提醒使用过期浏览器用户升级的项目网站:http://browser-update.org/-->
+		<script> 
+			var $buoop = {required:{e:-6,f:-6,o:-6,s:-6,c:-6},insecure:true,unsupported:true,mobile:false,style:"corner",api:2019.12 }; 
+			function $buo_f(){ 
+			 var e = document.createElement("script"); 
+			 e.src = "//browser-update.org/update.min.js"; 
+			 document.body.appendChild(e);
+			};
+			try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+			catch(e){window.attachEvent("onload", $buo_f)}
+			</script>
+		<!--
+		Hatsune Miku在百度翻译里→早津未来
+		在谷歌翻译里→初音未来
+		还是谷歌翻译好用点......
+		2019.12.07
+		-->
+
+</div>
+
+<script src="https://cdn.bootcss.com/fitvids/1.2.0/jquery.fitvids.min.js"></script>
+<script type='text/javascript' src='https://cdn.jsdelivr.net/gh/lijiajunljj/wz-cdn@1.3/old/media/scripts/marlin-scripts.js'></script>
+ <script src="//tokinx.github.io/lately/lately.min.js"></script>
+  <script>jQuery(document).ready(function(){$.lately({'target':'.lately-a,.lately-b,.lately-c'})});</script>
+  <style type="text/css">a.back_to_top {
+    text-decoration: none;
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    background: #f0f0f0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    line-height: 36px;
+    font-size: 18px;
+    text-align: center;
+    transition-duration: .5s;
+    transition-propety: background-color;
+    display: none;
+}
+
+a.back_to_top span {
+    color: #888;
+}
+
+a.back_to_top:hover {
+    cursor: pointer;
+    background: #dfdfdf;
+}
+
+a.back_to_top:hover span {
+    color: #555;
+}
+
+@media print, screen and (max-width: 580px) {
+    .back_to_top {
+        display: none !important;
+    }
+}
+
+
+
+</style><a id="back_to_top" href="#" class="back_to_top"><span><i class="iconfont icon-xiangshang"></i></span>
+</a>
+
+
+<script>$(document).ready((function(_this) {
+  return function() {
+    var bt;
+    bt = $('#back_to_top');
+    if ($(document).width() > 480) {
+      $(window).scroll(function() {
+        var st;
+        st = $(window).scrollTop();
+        if (st > 30) {
+          return bt.css('display', 'block');
+        } else {
+          return bt.css('display', 'none');
+        }
+      });
+      return bt.click(function() {
+        $('body,html').animate({
+          scrollTop: 0
+        }, 800);
+        return false;
+      });
+    }
+  };
+})(this));
+</script>
+
+		<script data-no-instant>
+    (function ($) {
+        $.extend({
+            adamsOverload: function () {
+                $('.navigation:eq(0)').remove();
+                $("").attr("rel" , "external");
+                $("a[rel='external'],a[rel='external nofollow']").attr("target","_blank");
+                $("a.vi").attr("rel" , "");
+                $.viewImage({
+                    'target'  : 'img',
+                    'exclude' : '.vsmile-icons img,.gallery img',
+                    'delay'   : 300
+                });
+                $.lately({
+                    'target' : '.commentmetadata a,.infos time,.post-list time'
+                });
+                prettyPrint();
+                
+                $('ul.links li a').each(function(){
+                    if($(this).parent().find('.bg').length==0){
+                        $(this).parent().append('<!---<div class="bg" style="background-image:url(https://c3.glgoo.top/s2/favicons?domain='+$(this).attr("href")+')"></div>--->')
+                    }
+                });
+            }
+        });
+    })(jQuery);
+    jQuery.adamsOverload();
+</script>
+
+</body>
+</html>
